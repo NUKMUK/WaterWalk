@@ -13,9 +13,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by rasmu on 22.12.2015.
- */
 @SuppressWarnings("deprecation")
 public class WaterWalk extends JavaPlugin implements Listener {
 
@@ -23,7 +20,7 @@ public class WaterWalk extends JavaPlugin implements Listener {
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
     }
 
-    public static List<Block> getNearbyBlocks(Location location, int radius) {
+    private static List<Block> getNearbyBlocks(Location location, int radius) {
         List<Block> blocks = new ArrayList<Block>();
         for(int x = location.getBlockX() - radius; x <= location.getBlockX() + radius; x++) {
             for(int y = location.getBlockY() - radius; y <= location.getBlockY() + radius; y++) {
@@ -45,7 +42,7 @@ public class WaterWalk extends JavaPlugin implements Listener {
                             e.getPlayer().sendBlockChange(e.getTo().getBlock().getLocation().add(0, -1, 0), Material.STAINED_CLAY, (byte) (Math.random() * 16));
                             e.getPlayer().sendBlockChange(e.getTo().getBlock().getLocation().add(0, -2, 0), Material.STAINED_CLAY, (byte) (Math.random() * 16));
                             if((b.getLocation() != e.getPlayer().getLocation())){
-                                e.getPlayer().sendBlockChange(b.getLocation(), Material.STAINED_GLASS, (byte) (Math.random() * 16));
+                                e.getPlayer().sendBlockChange(b.getLocation(), Material.STAINED_GLASS, (byte) (Math.random() * 15 + 1));
                             }
                         }
                     }
